@@ -8,3 +8,9 @@
 nest g service iam/hashing  
 nest g service iam/hashing/bcrypt --flat
 nest g class iam/authentication/dto/sign-in.dto --no-spec
+
+## Update user role
+
+npm run start -- --entryFile repl
+await get("UserRepository").update({ id: 1 }, { role: 'regular' })
+await get("UserRepository").find()
