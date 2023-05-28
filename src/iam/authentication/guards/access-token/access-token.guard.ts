@@ -47,8 +47,8 @@ export class AccessTokenGuard implements CanActivate {
 
   //! Will differ if using cookies. This is for access token in header
   private extractTokenFromHeader(request: Request): string | undefined {
-    const [_, token] = request.headers.authorization?.split(' ') ?? []; // split Bearer and token
+    const [type, token] = request.headers.authorization?.split(' ') ?? []; // split Bearer and token
 
-    return token;
+    return type === 'Bearer' ? token : undefined;
   }
 }
