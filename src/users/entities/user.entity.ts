@@ -20,7 +20,9 @@ export class User {
     unique: true,
   })
   email: string;
-  @Column()
+  @Column({
+    nullable: true,
+  })
   password: string;
 
   @Column({
@@ -35,4 +37,7 @@ export class User {
 
   @Column({ enum: Permission, default: [], type: 'json' })
   permissions: PermissionType[];
+
+  @Column({ nullable: true })
+  googleId: string;
 }
